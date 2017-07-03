@@ -3,6 +3,7 @@ Bitcoin is an emerging digital currency, the most distinctive characteristic is 
 Therefore the transaction data in Bitcoin serve as an alternative to financial data which might not always be accessible and poses privacy concerns.  
 This project shows how to detect abnormal transactions in the Bitcoin data.  
 
+
 ## Data  
 The data used in this project can be downloaded from this link.  
 http://compbio.cs.uic.edu/data/bitcoin/  
@@ -47,7 +48,16 @@ How it works:
 3. Build many of those trees to obtain an average path length for each data point.  
 4. Identify the proportion with the shortest average path length as outliers.  
 
-![alt text](/images/l14-anomaly-detection-19-638.jpg "Isolation Forest - tree")  
+![alt text](/images/l14-anomaly-detection-19-638.jpg "Isolation Forest - Tree")  
 (source: https://www.slideshare.net/mlvlc/l14-anomaly-detection)  
-![alt text](/images/anomaly-detection-using-isolation-forests-10-638.jpg "Isolation Forest - partition")  
+![alt text](/images/anomaly-detection-using-isolation-forests-10-638.jpg "Isolation Forest - Partition")  
 (source: https://www.slideshare.net/turi-inc/anomaly-detection-using-isolation-forests)  
+
+An isolation forest of 100 trees was built from the transactions, and the most extreme 1% transactions were identified as anomalies.  
+
+
+## Results  
+After running the isolation forest model, 2782 transactions were identified as abnormal.  
+The model determined transactions with an anomaly score (log average path length) -0.0948 or lower were anomalies.  
+
+![alt text](/images/anomaly-scores.png "Anomaly Scores Distribution and Cut-off")  
