@@ -37,4 +37,4 @@ As a result, concepts in graph theory will be very useful when analysing transac
 
 
 ## Isolation Forest  
-![alt text](https://image.slidesharecdn.com/anomalydetection-150918115852-lva1-app6892/95/l14-anomaly-detection-19-638.jpg?cb=1442577598 "Isolation Forest - tree")
+![alt text](/images/l14-anomaly-detection-19-638.jpg "Isolation Forest - tree")
