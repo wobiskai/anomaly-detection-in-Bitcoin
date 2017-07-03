@@ -37,7 +37,17 @@ As a result, concepts in graph theory will be very useful when analysing transac
 
 
 ## Isolation Forest  
+A robust algorithm for anomaly detection.  
+- Does not require assumptions on the data, unlike Elliptic Envelope which requires data to be Guassian  
+- Able to capture more complex structure than One-Class SVM  
+
+How it works:  
+1. Build a tree by randomly split data into different partitions until every data point is isolated.  
+2. The idea is data point located at leafs with a shorter path from the root are likely to be outliers.  
+3. Build many of those trees to obtain an average path length for each data point.  
+4. Identify the proportion with the shortest average path length as outliers.  
+
 ![alt text](/images/l14-anomaly-detection-19-638.jpg "Isolation Forest - tree")  
-https://www.slideshare.net/mlvlc/l14-anomaly-detection  
+(source: https://www.slideshare.net/mlvlc/l14-anomaly-detection)  
 ![alt text](/images/anomaly-detection-using-isolation-forests-10-638.jpg "Isolation Forest - partition")  
-https://www.slideshare.net/turi-inc/anomaly-detection-using-isolation-forests  
+(source: https://www.slideshare.net/turi-inc/anomaly-detection-using-isolation-forests)  
