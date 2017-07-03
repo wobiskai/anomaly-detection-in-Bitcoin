@@ -59,5 +59,15 @@ An isolation forest of 100 trees was built from the transactions, and the most e
 ## Results  
 After running the isolation forest model, 2782 transactions were identified as abnormal.  
 The model determined transactions with an anomaly score (log average path length) -0.0948 or lower were anomalies.  
+The plot shows the distribution of anomaly scores of every transaction, all transactions with score lower than the threshold (left of the dotted red line) are classified as anomalies.  
 
 ![alt text](/images/anomaly-scores.png "Anomaly Scores Distribution and Cut-off")  
+
+Let's visualize the transactions to verify that the anomalies found were different to normal transactions.  
+t-SNE is a dimensionality reduction technique to visualize high dimension data.  
+It tries to approximate the high dimension distribution with a low dimension distribution.  
+It is a machine learning algorithm itself!  
+
+The visualization shows 5000 of the transactions, with blue dots indicate normal transactions and red dots indicate abnormal transactions.  
+
+![alt text](/image/t-sne-transactions.png "t-SNE Visualization of Transactions")
