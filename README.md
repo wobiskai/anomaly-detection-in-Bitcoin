@@ -1,9 +1,9 @@
-# Anomaly Detection in Bitcoin
+# Anomaly Detection in Bitcoin  
 Bitcoin is an emerging digital currency, the most distinctive characteristic is that all it's transactions are recorded in a publicaly avaiable blockchain.  
 Therefore the transaction data in Bitcoin serve as an alternative to financial data which might not always be accessible and poses privacy concerns.  
 This project shows how to detect abnormal transactions in the Bitcoin data.  
 
-## Data
+## Data  
 The data used in this project can be downloaded from this link.  
 http://compbio.cs.uic.edu/data/bitcoin/  
 
@@ -28,7 +28,7 @@ Each transaction has:
 For demonstration purpose, we will use data from January 2009 to December 2010, with 218K transactions and 110K users.  
 
 
-## Graph Theory
+## Graph Theory  
 Transactions in a financial system forms a graph where each user is a node and each transaction is an edge.   
 As a result, concepts in graph theory will be very useful when analysing transactions and finding anomalies.  
 - Degree - Number of nodes connecting this node  
@@ -36,4 +36,5 @@ As a result, concepts in graph theory will be very useful when analysing transac
 - Strongly connected components - Isolated communities  
 
 
-## 
+## Isolation Forest  
+![alt text](https://image.slidesharecdn.com/anomalydetection-150918115852-lva1-app6892/95/l14-anomaly-detection-19-638.jpg?cb=1442577598 "Isolation Forest - tree")
