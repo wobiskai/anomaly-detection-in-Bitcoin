@@ -69,5 +69,7 @@ It tries to approximate the high dimension distribution with a low dimension dis
 It is a machine learning algorithm itself!  
 
 The visualization shows 5000 of the transactions, with blue dots indicate normal transactions and red dots indicate abnormal transactions.  
+As shown in the plot, the anomalies identified lies in isolated regions and are away from structures formed by normal transactions.  
 
-![alt text](/images/t-sne-transactions.png "t-SNE Visualization of Transactions")
+![alt text](/images/t-sne-transactions.png "t-SNE Visualization of Transactions")  
+
