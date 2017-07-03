@@ -9,12 +9,14 @@ http://compbio.cs.uic.edu/data/bitcoin/
 
 The data was obtained from parsing the blockchain using a Python script.  
 The file we use contains Bitcoin transactions from January 2009 to April 2013, with over 15M transactions and 6.3M users.  
+
 Each transaction has:  
 - A transaction key  
 - User ID sending Bitcoin  
 - User ID receiving Bitcoin  
 - Date and time when the transaction occur  
 - Number of Bitcoins transferred  
+
 | txn_key |	from_user |	to_user	|            date |     amount |
 | ------: | --------: | ------: | --------------: | ---------: |
 | 1	      | 2	        | 2	      | 20130410142250	| 24.375000  |
