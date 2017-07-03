@@ -1,5 +1,16 @@
 # Anomaly Detection in Bitcoin
-Detect abnormal transactions in Bitcoin data
+Bitcoin is an emerging digital currency, the most distinctive characteristic is that all it's transactions are recorded in a publicaly avaiable blockchain.  
+Therefore the transaction data in Bitcoin serve as an alternative to finanical data which might not always be accessible and poses privacy concerns.  
+This project shows how to detect abnormal transactions in the Bitcoin data.  
+
+## Data
+The data used in this project can be downloaded from this link.  
+http://compbio.cs.uic.edu/data/bitcoin/  
+
+The data was obtained from parsing the blockchain using a Python script.  
+
+The file we use contains Bitcoin transactions from January 2009 to April 2013, with over 15M transactions and 6.3M users.  
+For demonstration purpose, we will use data from January 2009 to December 2010, with 218K transactions and 110K users.  
 
 | txn_key |	from_user |	to_user	|            date |  amount    |
 | ------: | --------: | ------: | --------------: | ---------: |
