@@ -70,4 +70,4 @@ It is a machine learning algorithm itself!
 
 The visualization shows 5000 of the transactions, with blue dots indicate normal transactions and red dots indicate abnormal transactions.  
 
-![alt text](/image/t-sne-transactions.png "t-SNE Visualization of Transactions")
+![alt text](/images/t-sne-transactions.png "t-SNE Visualization of Transactions")
