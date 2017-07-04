@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+  opacity: 0.5;
+}
+
+.link:hover {
+  opacity: 1.0;
+}
+
+#licensing {
+  fill: red;
+}
+
+.link.licensing {
+  stroke: red;
+}
+
+.link.resolved {
+  stroke-dasharray: 0,2 1;
+}
+
+.node circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+  opacity: 0.5;
+}
+
+.node.fixed circle {
+  opacity: 1.0;
+}
+
+.node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = 960,
+    height = 500;
+
+var force = d3.layout.force()
+    .size([width, height])
+    .linkDistance(80)
+    .charge(-300)
+    .on("tick", tick);
+    
+var drag = force.drag()
+    .on("dragstart", dragstart);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// Per-type markers, as they don't inherit styles.
+var marker = svg.append("defs").selectAll("marker")
+    .data(["suit", "licensing", "resolved"])
+  .enter().append("marker")
+    .attr("id", function(d) { return d; })
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+  .append("path")
+    .attr("d", "M0,-5L10,0L0,5");
+    
+var link = svg.selectAll(".link"),
+    node = svg.selectAll(".node");
+    
+d3.json("../json/network.json", function(error, graph) {
+  if (error) throw error;
+  
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  link = link
+      .data(graph.links)
+    .enter().append("path")
+      .attr("class", function(d) { return "link " + d.type; })
+      .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+
+  node = node
+      .data(graph.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .on("dblclick", dblclick)
+      .call(drag);
+  
+  node
+      .append("circle")
+      .attr("r", 6);
+
+  node
+      .append("text")
+      .attr("dx", 8)
+      .attr("dy", ".35em")
+      .text(function(d) { return d.id; });
+    
+});
+
+// Use elliptical arc path segments to doubly-encode directionality.
+function tick() {
+  link.attr("d", linkArc);
+  node.attr("transform", transform);
+}
+
+function linkArc(d) {
+  var x1 = d.source.x,
+      y1 = d.source.y,
+      x2 = d.target.x,
+      y2 = d.target.y,
+      dx = x2 - x1,
+      dy = y2 - y1,
+      dr = Math.sqrt(dx * dx + dy * dy);
+    
+  // Make arcs for self loops.  
+  if ( d.source == d.target ) {
+    // Deviate the target from the source a bit so that the arc does not collapse into a single point.  
+    x2 ++;
+    y2 ++;
+    // Set a fixed arc radius.  
+    dr = 20;
+    return "M" + x1 + "," + y1 + "A" + dr + "," + dr + " 0 1,1 " + x2 + "," + y2;
+  } else {
+    return "M" + x1 + "," + y1 + "A" + dr + "," + dr + " 0 0,1 " + x2 + "," + y2;
+  }
+}
+
+function transform(d) {
+  return "translate(" + d.x + "," + d.y + ")";
+}
+  
+function dragstart(d) {
+  d3.select(this).classed("fixed", d.fixed = true);
+}
+  
+function dblclick(d) {
+  d3.select(this).classed("fixed", d.fixed = false);
+}
+
+</script>
